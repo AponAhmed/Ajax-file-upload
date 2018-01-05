@@ -1,3 +1,4 @@
+<?php
 //ATTACH define location to move file 
 if (isset($_FILES['ticket_attach'])) {
     $fname = str_replace(",", "+", $_FILES['ticket_attach']['name']);
