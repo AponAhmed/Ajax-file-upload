@@ -192,3 +192,17 @@ function createStatusbar(obj, url) {
         sb.children(".filename").children("input").remove()
     }
 }
+
+function insert_attach(input, url) {
+    var files = input.files;
+    $.each(files, function(idx, file) {
+        var fd = new FormData();
+        fd.append('ticket_attach', file);
+        var obj = $(".attList");
+        var status = new createStatusbar(obj, url); //Using this we can set progress.
+        // var status="";
+        status.setFileNameSize(file.name, file.size);
+        sendFileToServer(fd, status, file, url);
+    });
+    $(files).val("");
+}
